@@ -5,6 +5,21 @@ import axiosClient from '../../api/axiosClient';
 
 const formatCurrency = (amount) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
 
+const formatApiError = (error) => {
+  const detail = error?.response?.data?.detail;
+  if (Array.isArray(detail)) {
+    return detail
+      .map(item => {
+        const field = Array.isArray(item?.loc) ? item.loc[item.loc.length - 1] : 'field';
+        return `${field}: ${item?.msg || 'Invalid'}`;
+      })
+      .join('; ');
+  }
+  if (typeof detail === 'string') return detail;
+  if (detail) return JSON.stringify(detail);
+  return error?.message || 'Lỗi không xác định';
+};
+
 // ==========================================
 // HÀM FORMAT MARKDOWN CƠ BẢN CHO CHATBOT
 // ==========================================
@@ -140,25 +155,30 @@ export default function AIChat() {
   const handleConfirmTransactions = async () => {
       setIsSavingTx(true);
       try {
-          // Lặp qua mảng pendingTxs do AI trả về để đẩy lên Backend
-          for (const tx of pendingTxs) {
-              await axiosClient.post('/transactions/', {
-                  amount: tx.amount,
-                  transaction_type: tx.transaction_type,
-                  category_id: tx.category_id,
-                  wallet_id: tx.wallet_id,
-                  note: tx.note || 'AI tự động ghi nhận',
-                  date: new Date().toISOString().split('T')[0]
-              });
-          }
-          toast.success(`Đã lưu thành công ${pendingTxs.length} giao dịch!`);
+        const defaultWalletId = wallets?.[0]?.wallet_id;
+        if (!defaultWalletId) {
+          toast.error('Chưa có ví để lưu giao dịch. Vui lòng tạo ví trước.');
+          return;
+        }
+
+        const payload = pendingTxs.map(tx => ({
+          amount: Number(tx.amount),
+          transaction_type: tx.transaction_type,
+          category_id: Number(tx.category_id),
+          wallet_id: Number(tx.wallet_id ?? defaultWalletId),
+          note: tx.note || 'AI tự động ghi nhận',
+          date: tx.date || new Date().toISOString().split('T')[0]
+        }));
+
+        await axiosClient.post('/transactions/bulk', payload);
+        toast.success(`Đã lưu thành công ${pendingTxs.length} giao dịch!`);
           setIsConfirmModalOpen(false);
           setPendingTxs([]);
 
           // Thêm một tin nhắn báo thành công vào khung chat để UX mượt hơn
           setMessages(prev => [...prev, { sender: 'bot', text: '✅ Các giao dịch của bạn đã được lưu vào hệ thống an toàn.' }]);
       } catch (error) {
-          toast.error("Lỗi khi lưu giao dịch: " + (error.response?.data?.detail || error.message));
+          toast.error(`Lỗi khi lưu giao dịch: ${formatApiError(error)}`);
       } finally {
           setIsSavingTx(false);
       }
@@ -266,7 +286,8 @@ export default function AIChat() {
 
             <div className="p-5 lg:p-6 overflow-y-auto flex-1 bg-slate-50/50 space-y-3">
                 {pendingTxs.map((tx, idx) => {
-                    const walletName = wallets.find(w => w.wallet_id === tx.wallet_id)?.name || 'Ví mặc định';
+                  const resolvedWalletId = tx.wallet_id ?? wallets?.[0]?.wallet_id;
+                  const walletName = wallets.find(w => w.wallet_id === resolvedWalletId)?.name || 'Ví mặc định';
                     const categoryObj = categories.find(c => c.category_id === tx.category_id);
                     const categoryName = categoryObj ? `${categoryObj.icon || '📌'} ${categoryObj.name}` : 'Chưa phân loại';
                     const isIncome = tx.transaction_type === 'income';

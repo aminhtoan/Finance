@@ -49,7 +49,7 @@ Hệ thống đã được thiết lập tự động hóa Triển khai (Deploym
 Dự án áp dụng mô hình kiến trúc **3-Tier (Router - Service - CRUD)** phía Backend giúp dễ dàng mở rộng và test cô lập.
 
 ```text
-hoanhngjp-IFinance/
+aminhtoan-Finance/
 ├── backend/                      # Source code Backend (FastAPI)
 │   ├── alembic/                  # Quản lý Migration Database (Lịch sử thay đổi Schema Database)
 │   ├── app/
