@@ -6,9 +6,7 @@ import pandas as pd
 from app.crud.crud_investment import investment as crud_investment
 from app.crud.crud_wallet import wallet as crud_wallet
 from app.crud.crud_category import category as crud_category
-from app.models.finance_modules import Investment
-from app.models.wallet_category import Category
-from app.models.transaction import Transaction
+from app.models import Investment, Category, Transaction
 from app.models.enums import TransactionType
 from app.schemas.investment import InvestmentCreate, InvestmentUpdateValue, InvestmentSell, InvestmentPassiveIncome
 

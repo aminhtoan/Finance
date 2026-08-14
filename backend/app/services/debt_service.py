@@ -4,8 +4,7 @@ from decimal import Decimal
 
 from app.crud.crud_debt import debt as crud_debt
 from app.crud.crud_wallet import wallet as crud_wallet
-from app.models.finance_modules import Debt, DebtRepayment
-from app.models.transaction import Transaction
+from app.models import Debt, DebtRepayment, Transaction
 from app.models.enums import TransactionType, DebtType, WalletType
 from app.schemas.debt import DebtCreate, DebtRepaymentCreate
 

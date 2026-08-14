@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.crud.base import CRUDBase
-from app.models.finance_modules import Debt
+from app.models import Debt
 from app.schemas.debt import DebtCreate, DebtCreate  # Placeholder for update
 
 class CRUDDebt(CRUDBase[Debt, DebtCreate, DebtCreate]):

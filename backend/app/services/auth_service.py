@@ -9,7 +9,7 @@ from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 
 from app.crud.crud_user import user as crud_user
-from app.models.user import User, TokenBlacklist
+from app.models import User, TokenBlacklist
 from app.schemas.user import UserCreate
 from app.core.security import get_password_hash, verify_password, create_access_token, create_refresh_token, SECRET_KEY, ALGORITHM
 

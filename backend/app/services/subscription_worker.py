@@ -2,9 +2,7 @@ from datetime import date
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 from app.db.database import SessionLocal
-from app.models.finance_modules import Subscription
-from app.models.wallet_category import Wallet
-from app.models.transaction import Transaction
+from app.models import Subscription, Wallet, Transaction
 from app.models.enums import TransactionType
 
 

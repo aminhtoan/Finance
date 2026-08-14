@@ -6,9 +6,7 @@ from decimal import Decimal
 
 from app.crud.crud_budget import budget as crud_budget
 from app.crud.crud_category import category as crud_category
-from app.models.finance_modules import Budget
-from app.models.wallet_category import Category
-from app.models.transaction import Transaction
+from app.models import Budget, Category, Transaction
 from app.models.enums import TransactionType, BudgetPeriod
 from app.schemas.budget import BudgetCreate
 

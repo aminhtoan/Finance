@@ -1,8 +1,7 @@
 from sqlalchemy.orm import Session
 from app.crud.crud_category import category as crud_category
-from app.models.wallet_category import Category
+from app.models import Category, Transaction
 from app.schemas.category import CategoryCreate, CategoryUpdate
-from app.models.transaction import Transaction
 
 class CategoryService:
     def create(self, db: Session, category_in: CategoryCreate, user_id: int):

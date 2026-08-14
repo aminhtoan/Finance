@@ -1,10 +1,8 @@
 from decimal import Decimal
 from sqlalchemy.orm import Session
 from app.crud.crud_wallet import wallet as crud_wallet
-from app.models.wallet_category import Wallet
+from app.models import Wallet, Transaction, Category
 from app.schemas.wallet import WalletCreate, WalletUpdate
-from app.models.transaction import Transaction
-from app.models.wallet_category import Category
 from app.models.enums import TransactionType, WalletType
 
 class WalletService:

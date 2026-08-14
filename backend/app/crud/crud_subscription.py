@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.crud.base import CRUDBase
-from app.models.finance_modules import Subscription
+from app.models import Subscription
 from app.schemas.subscription import SubscriptionCreate, SubscriptionUpdate
 
 class CRUDSubscription(CRUDBase[Subscription, SubscriptionCreate, SubscriptionUpdate]):

@@ -1,8 +1,7 @@
 import pytest
 from datetime import date
 from decimal import Decimal
-from app.models.user import User
-from app.models.wallet_category import Category
+from app.models import User, Category
 from app.models.enums import WalletType, TransactionType
 from app.schemas.wallet import WalletCreate
 from app.schemas.transaction import TransactionCreate, TransactionTransfer, TransactionUpdate
@@ -130,8 +129,7 @@ def test_bulk_insert_transactions(db_session, test_user, test_category):
 # TC-07: Tự động khởi tạo Ví, Danh mục và Khoản nợ từ Bulk Import
 # ===============================================
 def test_bulk_insert_auto_generation(db_session, test_user):
-    from app.models.wallet_category import Category, Wallet
-    from app.models.finance_modules import Debt, DebtRepayment
+    from app.models import Category, Wallet, Debt, DebtRepayment
     
     tx_list = [
         # Giao dịch 1: Khởi tạo Ví "Ví Tiết Kiệm" và Danh mục "Lương thưởng"

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.models.user import User
+from app.models import User
 from app.schemas.user import UserUpdate, UserChangePassword, UserPreferencesUpdate
 from app.core.security import verify_password, get_password_hash
 

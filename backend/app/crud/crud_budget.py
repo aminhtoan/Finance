@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import Optional
 from app.crud.base import CRUDBase
-from app.models.finance_modules import Budget
+from app.models import Budget
 from app.schemas.budget import BudgetCreate
 
 class CRUDBudget(CRUDBase[Budget, BudgetCreate, BudgetCreate]):

@@ -23,8 +23,7 @@ def db_session():
         # Xóa bảng sau khi test xong
         Base.metadata.drop_all(bind=engine)
 
-from app.models.user import User
-from app.models.wallet_category import Category
+from app.models import User, Category
 from app.core.security import get_password_hash
 
 # Helper: Sinh giả User

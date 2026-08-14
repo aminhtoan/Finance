@@ -3,7 +3,7 @@ from sqlalchemy import desc
 from typing import List, Optional
 from datetime import date
 from app.crud.base import CRUDBase
-from app.models.transaction import Transaction
+from app.models import Transaction
 from app.schemas.transaction import TransactionCreate, TransactionUpdate
 
 class CRUDTransaction(CRUDBase[Transaction, TransactionCreate, TransactionUpdate]):

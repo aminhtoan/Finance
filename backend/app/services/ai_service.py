@@ -10,8 +10,7 @@ from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 
 from app.db.mongodb import chat_collection
-from app.models.wallet_category import Wallet, Category
-from app.models.transaction import Transaction
+from app.models import Wallet, Category, Transaction
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")

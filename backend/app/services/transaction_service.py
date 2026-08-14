@@ -3,10 +3,9 @@ from datetime import date, datetime, timezone
 from app.crud.crud_transaction import transaction as crud_transaction
 from app.crud.crud_wallet import wallet as crud_wallet
 from app.crud.crud_category import category as crud_category
-from app.models.transaction import Transaction
+from app.models import Transaction, Debt, DebtRepayment
 from app.schemas.transaction import TransactionCreate, TransactionUpdate, TransactionTransfer
 from app.models.enums import TransactionType, WalletType, DebtType
-from app.models.finance_modules import Debt, DebtRepayment
 
 class TransactionService:
     def get_paginated(
@@ -74,7 +73,7 @@ class TransactionService:
             if is_dynamic_wallet:
                 w_key = f"new_{tx_in.new_wallet_name.strip().lower()}"
                 if w_key not in wallet_cache:
-                    from app.models.wallet_category import Wallet
+                    from app.models import Wallet
                     new_wallet = Wallet(
                         user_id=user_id,
                         name=tx_in.new_wallet_name.strip(),
@@ -104,7 +103,7 @@ class TransactionService:
             if is_dynamic_cat:
                 cat_key = f"new_{tx_in.new_category_name.strip().lower()}"
                 if cat_key not in category_cache:
-                    from app.models.wallet_category import Category
+                    from app.models import Category
                     new_cat = Category(
                         user_id=user_id,
                         name=tx_in.new_category_name.strip(),

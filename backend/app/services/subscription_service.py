@@ -4,9 +4,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 from app.crud.crud_subscription import subscription as crud_subscription
 from app.crud.crud_wallet import wallet as crud_wallet
-from app.models.finance_modules import Subscription
-from app.models.wallet_category import Category
-from app.models.transaction import Transaction
+from app.models import Subscription, Category, Transaction
 from app.models.enums import TransactionType
 from app.schemas.subscription import SubscriptionCreate, SubscriptionUpdate
 

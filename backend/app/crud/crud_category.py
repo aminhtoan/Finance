@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.crud.base import CRUDBase
-from app.models.wallet_category import Category
+from app.models import Category
 from app.schemas.category import CategoryCreate, CategoryUpdate
 
 class CRUDCategory(CRUDBase[Category, CategoryCreate, CategoryUpdate]):

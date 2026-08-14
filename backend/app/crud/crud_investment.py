@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.crud.base import CRUDBase
-from app.models.finance_modules import Investment
+from app.models import Investment
 from app.schemas.investment import InvestmentCreate, InvestmentUpdateValue
 
 class CRUDInvestment(CRUDBase[Investment, InvestmentCreate, InvestmentUpdateValue]):
