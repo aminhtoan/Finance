@@ -154,9 +154,15 @@ GEMINI_API_KEY=your_google_gemini_api_key_here
 VNSTOCKS_API_KEY=your_vnstocks_api_key_here
 ```
 
-Khởi chạy Server:
+Nạp dữ liệu mẫu (Seed Data) & Khởi chạy Server:
 ```bash
+# Cập nhật cấu trúc database
 alembic upgrade head
+
+# Nạp dữ liệu mẫu (Tài khoản test@ifinance.com / mật khẩu Test@123)
+python seed.py
+
+# Khởi chạy backend API
 uvicorn app.main:app --reload --port 8000
 ```
 
