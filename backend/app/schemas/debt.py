@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import Optional
 from datetime import date, timedelta
 from decimal import Decimal
@@ -37,8 +37,7 @@ class DebtResponse(BaseModel):
     due_date: Optional[date]
     is_installment: Optional[bool]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Schema cho việc Trả Nợ (Repayment)
 class DebtRepaymentCreate(BaseModel):

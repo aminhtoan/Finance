@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field, model_validator, ConfigDict
 from typing import Optional
 from decimal import Decimal
 from app.models.enums import WalletType
@@ -29,5 +29,4 @@ class WalletResponse(WalletBase):
     balance: Decimal
     is_active: bool
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

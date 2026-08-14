@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 from datetime import date
 from decimal import Decimal
@@ -29,5 +29,4 @@ class SubscriptionResponse(SubscriptionBase):
     subscription_id: int
     user_id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

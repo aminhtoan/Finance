@@ -74,6 +74,8 @@ def test_user_login_and_token_refresh(db_session):
     refresh_token = tokens["refresh_token"]
     
     # Lấy access_token mới bằng refresh_token hợp lệ
+    import time
+    time.sleep(1)
     new_tokens = auth_service.refresh_token(db_session, refresh_token=refresh_token)
     assert new_tokens["access_token"] != tokens["access_token"]
 
