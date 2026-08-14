@@ -215,8 +215,8 @@ export default function Investments() {
         if (!ticker) ticker = 'FPT'; 
         
         const res = await axiosClient.get(`/investments/stock-price?ticker=${ticker}`);
-        if (res.data && res.data.data && res.data.data.price) {
-            currentPrice = Number(res.data.data.price);
+        if (res.data && res.data.price) {
+            currentPrice = Number(res.data.price);
             toast.success(`Đã lấy giá vnstock thành công! Giá 1 ${ticker} ≈ ${formatCurrency(currentPrice)}`);
         } else {
             return toast.error(`Không thể lấy giá cho mã chứng khoán ${ticker}.`);
