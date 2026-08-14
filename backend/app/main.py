@@ -18,6 +18,13 @@ scheduler.add_job(process_due_subscriptions, 'cron', hour=0, minute=1)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # 1. PHẦN STARTUP (Khởi động Server)
+    # Tự động tạo các bảng trong database nếu chưa tồn tại
+    from app.db.database import engine, Base
+    # Nạp toàn bộ models để Base.metadata thu thập cấu trúc bảng
+    import app.models
+    Base.metadata.create_all(bind=engine)
+    print("✅ [Database] Đã tự động kiểm tra và tạo các bảng DB thành công!")
+
     scheduler.start()
     print("⏳ [APScheduler] Đã khởi động Background Worker!")
 
