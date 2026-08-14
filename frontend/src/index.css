@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+@theme {
+  /* Override Indigo (Tím/Chàm cũ) thành Màu Xanh Đại Dương Premium (Ocean Blue) */
+  --color-indigo-50: #eff6ff;
+  --color-indigo-100: #dbeafe;
+  --color-indigo-200: #bfdbfe;
+  --color-indigo-300: #93c5fd;
+  --color-indigo-400: #60a5fa;
+  --color-indigo-500: #3b82f6;
+  --color-indigo-600: #2563eb;
+  --color-indigo-700: #1d4ed8;
+  --color-indigo-800: #1e40af;
+  --color-indigo-900: #1e3a8a;
+  --color-indigo-950: #172554;
+
+  /* Override Emerald & Green (Xanh lá cũ) thành Màu Vàng Kim / Hổ Phách (Amber/Gold) */
+  --color-emerald-50: #fffbeb;
+  --color-emerald-100: #fef3c7;
+  --color-emerald-200: #fde68a;
+  --color-emerald-300: #fcd34d;
+  --color-emerald-400: #fbbf24;
+  --color-emerald-500: #f59e0b;
+  --color-emerald-600: #d97706;
+  --color-emerald-700: #b45309;
+  --color-emerald-800: #92400e;
+  --color-emerald-900: #78350f;
+  --color-emerald-950: #451a03;
+
+  --color-green-50: #fffbeb;
+  --color-green-100: #fef3c7;
+  --color-green-200: #fde68a;
+  --color-green-300: #fcd34d;
+  --color-green-400: #fbbf24;
+  --color-green-500: #f59e0b;
+  --color-green-600: #d97706;
+  --color-green-700: #b45309;
+  --color-green-800: #92400e;
+  --color-green-900: #78350f;
+  --color-green-950: #451a03;
+}
+
 /* Các class custom thêm (nếu cần) */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;

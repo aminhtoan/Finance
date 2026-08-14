@@ -63,7 +63,7 @@ const getDefaultSellForm = () => ({
 const getDefaultPassiveForm = () => ({ amount: '', wallet_id: '', description: '' });
 
 // Màu sắc cho biểu đồ
-const COLORS = ['#4f46e5', '#eab308', '#06b6d4', '#10b981', '#f43f5e'];
+const COLORS = ['#2563eb', '#eab308', '#06b6d4', '#f59e0b', '#f43f5e'];
 
 export default function Investments() {
   const [investments, setInvestments] = useState([]);

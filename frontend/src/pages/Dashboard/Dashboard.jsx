@@ -5,7 +5,7 @@ import { PieChart, Pie, Cell, Tooltip as PieTooltip, BarChart, Bar, XAxis, YAxis
 import axiosClient from '../../api/axiosClient';
 
 const formatCurrency = (amount) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-const COLORS = ['#6366f1', '#10b981', '#f43f5e', '#f59e0b', '#8b5cf6', '#06b6d4', '#ec4899'];
+const COLORS = ['#2563eb', '#f59e0b', '#f43f5e', '#0ea5e9', '#06b6d4', '#ec4899', '#f43f5e'];
 
 const getWalletIcon = (type) => {
   if (type === 'cash') return Wallet;
@@ -278,7 +278,7 @@ export default function Dashboard() {
                   <PieChart>
                     <Pie data={dashboardData.pie} cx="50%" cy="50%" innerRadius={65} outerRadius={100} paddingAngle={5} dataKey="value">
                       {dashboardData.pie.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={activeCard === 'income' ? '#10b981' : activeCard === 'balance' ? '#6366f1' : COLORS[index % COLORS.length]} />
+                        <Cell key={`cell-${index}`} fill={activeCard === 'income' ? '#f59e0b' : activeCard === 'balance' ? '#2563eb' : COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>
                     <PieTooltip formatter={(value) => formatCurrency(value)} />
@@ -302,7 +302,7 @@ export default function Dashboard() {
                     <BarTooltip formatter={(value) => formatCurrency(value)} cursor={{fill: '#f8fafc'}} />
 
                     {(activeCard === 'income' || activeCard === 'balance') && (
-                        <Bar dataKey="income" name="Thu nhập" fill="#10b981" radius={[4, 4, 0, 0]} barSize={activeCard === 'balance' ? 8 : 16} />
+                        <Bar dataKey="income" name="Thu nhập" fill="#f59e0b" radius={[4, 4, 0, 0]} barSize={activeCard === 'balance' ? 8 : 16} />
                     )}
 
                     {(activeCard === 'expense' || activeCard === 'balance') && (
