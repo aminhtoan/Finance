@@ -204,3 +204,4 @@ pytest --cov=app.services --cov-report=term-missing
 - `test_debt_investment.py`: Test luồng vay/nợ, thuật toán trả nợ từng phần.
 - `test_ai_service.py`: Test AI (Chatbot RAG Function Calls, OCR Nhận thức sinh trắc Hóa đơn, Budget Planning).
 - `test_auth_service.py`: Test chuẩn xác cơ chế đăng nhập, Blacklist Token và Zero-Trust Security.
+
