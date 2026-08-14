@@ -39,7 +39,15 @@ app = FastAPI(
 # Cho phép Frontend gọi API mà không bị lỗi CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173", "https://i-finance-eosin.vercel.app", "https://i-finance-eosin.vercel.app", "https://i-finance-3c1o.vercel.app", "https://my-finance-nu-taw.vercel.app"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://finance-swart-eight.vercel.app",
+        "https://i-finance-eosin.vercel.app",
+        "https://i-finance-3c1o.vercel.app",
+        "https://my-finance-nu-taw.vercel.app"
+    ],
+    allow_origin_regex="https://.*\\.vercel\\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
